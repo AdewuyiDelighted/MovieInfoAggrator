@@ -1,0 +1,35 @@
+const form = document.forms['form']
+
+form.addEventListener('submit',(e)=>{
+    e.preventDefault()
+    const movieTitle = form.querySelector('.answer').value
+const sendData = async()=>{
+    try{
+        const allMovies = await fetch(`https://api.themoviedb.org/3/search/movie?query=${movieTitle}&api_key=1f4091b9f9262a90ac2b089bea81ccad`,{
+            method:"GET",
+            headers: {
+                "Content-Type":"application/json",
+            },
+        });
+            let movie = "";
+            const allMoviesJson = await allMovies.json();
+            console.log("All Avaliable movies ",allMoviesJson.results.length);
+            console.log(allMoviesJson.results)
+        
+        for(let index = 0; index < allMoviesJson.results.length;index++){
+            const obj = allMoviesJson.results[index]
+            movie += "<b>"+"<b/>" +"MOVIE TITLE : "+obj.title + '<br>'
+            delete obj['title']
+        
+            for(let key in obj){
+            movie += `${key}:${obj[key]}` +'<br>'
+        }   movie += '<br>' +'<br>'
+        }
+        document.getElementById('responses').innerHTML = movie
+    
+    }catch(error){
+        console.error("Error:", error)
+    }
+}
+sendData()
+})

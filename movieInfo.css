@@ -1,3 +1,19 @@
-body{
-    background-color:rgb(229, 248, 210)
+.movieInfo{
+    border: 2px solid rgb(240, 184, 178);
+    background-color:rgb(229, 248, 210);
+    height: 70vh;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+.appName{
+    text-align: center;
+    font-size: 50px;
+    font-weight: 800;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+.movieImg{
+    text-align: center;
 }
